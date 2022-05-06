@@ -24,9 +24,15 @@ def book_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def book_detail(request):
+def book_detail(request, id):
+    try:
+        book = Library.objects.get(pk=id)
+    except Library.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
     if request.method == 'GET':
-        pass
+        serializer = LibrarySerializer(book)
+        return Response(serializer.data)
     elif request.method == 'PUT':
         pass
     elif request.method == 'DELETE':

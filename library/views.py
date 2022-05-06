@@ -9,4 +9,4 @@ def book_list(request):
     # serialize them
     serializer = LibrarySerializer(books, many=True)
     # return json
-    return JsonResponse(serializer.data)
+    return JsonResponse(serializer.data, safe=False)

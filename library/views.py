@@ -40,4 +40,5 @@ def book_detail(request, id):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
-        pass
+        book.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

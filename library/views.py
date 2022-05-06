@@ -16,3 +16,5 @@ def book_list(request):
 
     if request.method == 'POST':
         serializer = LibrarySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()

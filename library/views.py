@@ -21,3 +21,13 @@ def book_list(request):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def book_detail(request):
+    if request.method == 'GET':
+        pass
+    elif request.method == 'PUT':
+        pass
+    elif request.method == 'DELETE':
+        pass

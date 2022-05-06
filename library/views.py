@@ -14,7 +14,7 @@ def book_list(request):
         # serialize them
         serializer = LibrarySerializer(books, many=True)
         # return json
-        return JsonResponse(serializer.data, safe=False)
+        return Response(serializer.data)
 
     if request.method == 'POST':
         serializer = LibrarySerializer(data=request.data)

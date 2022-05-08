@@ -13,7 +13,7 @@ print(response.headers['Content-Type'])
 
 # POST
 addbook_response = requests.post('http://127.0.0.1:8000/library/', json=
-{'isbn': 'ABC5', 'aisle': 1, 'book_name': 'Testing Fun Four'},
+{'isbn': 'ABC6', 'aisle': 1, 'book_name': 'Testing Fun Five'},
                                  headers={'Content-Type': 'application/json'})
 
 print(addbook_response.json())
@@ -22,5 +22,8 @@ print(addbook_response.status_code)
 assert addbook_response.status_code == 201
 book_id = response_json['id']
 
-
-
+# DELETE
+deletebook_response = requests.delete('http://127.0.0.1:8000/library/' + str(book_id),
+                                      headers={'Content-Type': 'application/json'})
+print(deletebook_response.status_code)
+assert deletebook_response.status_code == 204

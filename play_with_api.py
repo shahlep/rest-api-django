@@ -22,6 +22,16 @@ print(addbook_response.status_code)
 assert addbook_response.status_code == 201
 book_id = response_json['id']
 
+#GET By id
+response1 = requests.get('http://127.0.0.1:8000/library/'+str(book_id))
+
+dict_response1 = response1.json()
+
+print(response1.status_code)
+
+print(dict_response1)
+
+
 # DELETE
 deletebook_response = requests.delete('http://127.0.0.1:8000/library/' + str(book_id),
                                       headers={'Content-Type': 'application/json'})

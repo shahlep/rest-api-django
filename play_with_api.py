@@ -29,6 +29,8 @@ dict_response1 = response1.json()
 
 print(response1.status_code)
 
+assert response1.status_code == 200
+
 print(dict_response1)
 
 # PUT

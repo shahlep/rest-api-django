@@ -22,14 +22,37 @@ print(addbook_response.status_code)
 assert addbook_response.status_code == 201
 book_id = response_json['id']
 
-#GET By id
-response1 = requests.get('http://127.0.0.1:8000/library/'+str(book_id))
+# GET By id
+response1 = requests.get('http://127.0.0.1:8000/library/' + str(book_id))
 
 dict_response1 = response1.json()
 
 print(response1.status_code)
 
 print(dict_response1)
+
+# PUT
+response2 = requests.put('http://127.0.0.1:8000/library/' + str(book_id), json=
+{'isbn': 'ABC8', 'aisle': 1, 'book_name': 'Testing Fun Seven'},
+                          headers={'Content-Type': 'application/json'})
+
+dict_response2 = response2.json()
+
+print(response2.status_code)
+
+assert response2.status_code == 200
+
+print(dict_response2)
+
+# GET By id
+response3 = requests.get('http://127.0.0.1:8000/library/' + str(book_id))
+
+dict_response3 = response3.json()
+
+print(response3.status_code)
+
+assert response3.status_code == 200
+print(dict_response3)
 
 
 # DELETE

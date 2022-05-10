@@ -34,7 +34,7 @@ def book_detail(request, id):
         serializer = LibrarySerializer(book)
         return Response(serializer.data)
     elif request.method == 'PUT':
-        serializer = LibrarySerializer(book,data=request.data)
+        serializer = LibrarySerializer(book, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

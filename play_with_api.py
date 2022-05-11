@@ -62,3 +62,9 @@ deletebook_response = requests.delete('http://127.0.0.1:8000/library/' + str(boo
                                       headers={'Content-Type': 'application/json'})
 print(deletebook_response.status_code)
 assert deletebook_response.status_code == 204
+
+response5 = requests.get('http://127.0.0.1:8000/library/')
+
+dict_response5 = response5.json()
+
+assert response5.status_code == 200
